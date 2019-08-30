@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { shape, string } from 'prop-types'
-import { retrieve } from './utils'
 
 const DEFAULT_TIMEOUT = 60 * 60 * 1000
 
@@ -26,33 +25,39 @@ export function retrieve(key, retrievalFunction, timeout = DEFAULT_TIMEOUT) {
 }
 
 
-export default function Laika({ url, env, feature, onTrue, onFalse }) {
+export default function Laika({
+  url, env, feature, onTrue, onFalse,
+}) {
   const [status, setStatus] = useState(false)
 
-  useEffect(async () => {
-    const getFeatureStatus = feature => Promise.resolve(retrieve(
-      feature,
-      () => getLaikaFeatureStatus(feature),
-      1.5 * 60 * 1000,
-    ))
+  useEffect(() => {
+    async function fetchData() {
+      const getLaikaFeatureStatus = async (_feature) => {
+        const laikaUrl = `${url}/api/features/${_feature}/status/${env}`
 
-    const _status = await getFeatureStatus(feature)
-    setStatus(_status)
-  },[])
+        try {
+          const res = await fetch(laikaUrl)
 
-  const getLaikaFeatureStatus = async (feature) => {
-    const laikaUrl = `${url}/api/features/${feature}/status/${env}`
+          if (res.status !== 200) return false
 
-    try {
-      const res = await fetch(laikaUrl)
+          return res === true
+        } catch (err) {
+          return false
+        }
+      }
 
-      if (res.status !== 200) return false
+      const getFeatureStatus = (_feature) => Promise.resolve(retrieve(
+        feature,
+        () => getLaikaFeatureStatus(_feature),
+        1.5 * 60 * 1000,
+      ))
 
-      return res === true
-    } catch {
-      return false
+      const _status = await getFeatureStatus(feature)
+      setStatus(_status)
     }
-  }
+
+    fetchData()
+  }, [env, feature, url])
 
   return (
     <div>

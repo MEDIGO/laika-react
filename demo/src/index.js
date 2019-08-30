@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Laika from 'laika-react';
+import Laika from '../../src/Laika';
 
 render(
   <div>
