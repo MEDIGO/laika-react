@@ -22,4 +22,7 @@ module.exports = {
       },
     ],
   },
+  externals: {
+    'react': 'commonjs react',
+},
 }
