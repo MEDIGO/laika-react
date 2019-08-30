@@ -1,5 +1,5 @@
-# Component lib directory
-lib
+# Component index
+/index.js
 
 # Logs
 logs
@@ -39,5 +39,3 @@ typings
 
 # Optional REPL history
 .node_repl_history
-
-lib
