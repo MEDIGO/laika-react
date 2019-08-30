@@ -1,6 +1,6 @@
 {
   "name": "laika-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Laika client",
   "homepage": "https://github.com/MEDIGO",
   "keywords": [
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/MEDIGO/laika-react"
   },
-  "main": "./lib/index.js",
+  "main": "./index.js",
   "license": "MIT",
   "scripts": {
     "build": "webpack"

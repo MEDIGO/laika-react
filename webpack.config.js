@@ -4,7 +4,7 @@ module.exports = {
   mode: 'production',
   entry: './src/Laika.js',
   output: {
-    path: path.resolve('lib'),
+    path: path.resolve(''),
     filename: 'index.js',
     libraryTarget: 'commonjs2',
   },
@@ -12,7 +12,7 @@ module.exports = {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
