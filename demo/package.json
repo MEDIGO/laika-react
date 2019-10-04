@@ -1,24 +1,14 @@
 {
-  "name": "laika-react",
-  "version": "0.0.3",
-  "description": "React Laika client",
-  "homepage": "https://github.com/MEDIGO",
-  "keywords": [
-    "React",
-    "Laika",
-    "npm"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MEDIGO/laika-react"
-  },
-  "main": "./index.js",
+  "name": "laika-react-demo",
+  "version": "1.0.0",
+  "description": "Laika React Component Demo",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "start": "webpack-dev-server  --mode development --hot --inline --port 3000"
   },
-  "peerDependencies": {
-    "prop-types": "^15.7.2",
+  "dependencies": {
+    "laika-react": "file:../",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
@@ -33,10 +23,11 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",
-    "prop-types": "^15.6.0",
-    "react": "^16.9.0",
+    "prop-types": "^15.7.2",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.1.3"
   }
 }

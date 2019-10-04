@@ -1,64 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import { shape, string } from 'prop-types'
-import { retrieve } from './utils'
+import { getFeatureStatus } from './utils'
 
-const DEFAULT_TIMEOUT = 60 * 60 * 1000
-
-export const timeoutKey = (key) => `${key}_timeout`
-
-export function store(key, value) {
-  localStorage.setItem(key, JSON.stringify(value))
-  localStorage.setItem(timeoutKey(key), Date.now())
-  return value
-}
-
-export function retrieve(key, retrievalFunction, timeout = DEFAULT_TIMEOUT) {
-  const ts = localStorage.getItem(timeoutKey(key)) || new Date('1970-1-1').getTime()
-
-  if (ts && (Date.now() - ts) > timeout) {
-    return retrievalFunction()
-      .then((response) => store(key, response))
-      .catch(() => {
-      // fail silently
+export default class Laika extends Component {
+  componentDidMount() {
+    const { feature, url, env } = this.props
+    getFeatureStatus(feature, url, env)
+      .then((status) => {
+        this.setState({ [feature]: status })
       })
   }
-  return JSON.parse(localStorage.getItem(key))
-}
 
+  render() {
+    const { onTrue, onFalse, feature } = this.props
+    const flag = this.state ? this.state[feature] : false
 
-export default function Laika({ url, env, feature, onTrue, onFalse }) {
-  const [status, setStatus] = useState(false)
-
-  useEffect(async () => {
-    const getFeatureStatus = feature => Promise.resolve(retrieve(
-      feature,
-      () => getLaikaFeatureStatus(feature),
-      1.5 * 60 * 1000,
-    ))
-
-    const _status = await getFeatureStatus(feature)
-    setStatus(_status)
-  },[])
-
-  const getLaikaFeatureStatus = async (feature) => {
-    const laikaUrl = `${url}/api/features/${feature}/status/${env}`
-
-    try {
-      const res = await fetch(laikaUrl)
-
-      if (res.status !== 200) return false
-
-      return res === true
-    } catch {
-      return false
-    }
+    return (
+      <div>
+        { flag ? onTrue : onFalse }
+      </div>
+    )
   }
-
-  return (
-    <div>
-      { status ? onTrue : onFalse }
-    </div>
-  )
 }
 
 Laika.propTypes = {
