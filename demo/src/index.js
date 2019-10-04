@@ -1,17 +1,8 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Laika from '../../src/Laika';
+import React from 'react'
+import ReactDom from 'react-dom'
+import App from './App'
 
-render(
-  <div>
-    <h2>Laika React Component Demo</h2>
-    <Laika
-      url=""
-      feature=""
-      env=""
-      onTrue={<div style={{ width: 50, height: 50, backgroundColor: 'red' }} />}
-      onFalse={<div style={{ width: 50, height: 50, backgroundColor: 'blue' }} />}
-    />
-  </div>, 
+ReactDom.render(
+  <App/>, 
   document.getElementById('app')
-);
+)
