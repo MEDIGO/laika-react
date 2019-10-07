@@ -1,10 +1,10 @@
 import React from 'react'
-import Laika from 'laika-react'
+import Laika from '../../src/Laika'
+import NewComponent from './NewComponent'
+import OldComponent from './OldComponent'
 
 export default function App() {
   const env = 'dev'
-  const red = <div style={{ width: 50, height: 50, backgroundColor: 'red' }} />
-  const blue = <div style={{ width: 50, height: 50, backgroundColor: 'blue' }} />
 
   // Mock fetch responses
   const mockFetch = (url) => {
@@ -37,22 +37,22 @@ export default function App() {
           url="http://example.com"
           feature="NEW_FORM"
           env={env}
-          onTrue={red}
-          onFalse={blue}
+          onTrue={NewComponent}
+          onFalse={OldComponent}
         />
         <Laika
           url="http://example.com"
           feature="NEW_BUTTON"
           env={env}
-          onTrue={red}
-          onFalse={blue}
+          onTrue={NewComponent}
+          onFalse={OldComponent}
         />
         <Laika
           url="http://example.com"
           feature="NEW_INPUT"
           env={env}
-          onTrue={red}
-          onFalse={blue}
+          onTrue={NewComponent}
+          onFalse={OldComponent}
         />
       </div>
     </div>
