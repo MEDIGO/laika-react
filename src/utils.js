@@ -1,14 +1,14 @@
-const DEFAULT_TIMEOUT = 60 * 60 * 1000
+export const DEFAULT_TIMEOUT = 60 * 60 * 1000
 
 export const timeoutKey = (key) => `${key}_timeout`
 
-export function store(key, value) {
+export const store = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
   localStorage.setItem(timeoutKey(key), Date.now())
   return value
 }
 
-export function retrieve(key, retrievalFunction, timeout = DEFAULT_TIMEOUT) {
+export const retrieve = (key, retrievalFunction, timeout = DEFAULT_TIMEOUT) => {
   const ts = localStorage.getItem(timeoutKey(key)) || new Date('1970-1-1').getTime()
 
   if (ts && (Date.now() - ts) > timeout) {
@@ -21,12 +21,12 @@ export function retrieve(key, retrievalFunction, timeout = DEFAULT_TIMEOUT) {
   return JSON.parse(localStorage.getItem(key))
 }
 
-const parse = (res) => {
+export const parse = (res) => {
   if (!res.headers.get('content-type')) return null
   return res.headers.get('content-type').startsWith('application/json') ? res.json() : null
 }
 
-const getLaikaFeatureStatus = (feature, url, env) => {
+export const getLaikaFeatureStatus = (feature, url, env) => {
   const opts = {
     method: 'GET',
   }

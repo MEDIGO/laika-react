@@ -1,6 +1,11 @@
-src
+coverage
 demo
+src
 .babelrc
 .eslintrc.js
 .eslintignore
+.gitignore
+jest.config.js
+Makefile
 webpack.config.js
+mock.js
