@@ -44,18 +44,18 @@ describe('retrieve tests', () => {
     expect(retrievalFunction).toBeCalledTimes(0)
   })
 
-  it('reruns retrieve function if value has timed out', async () => {
-    const key = 'NEW_COMPONENT'
-    const value = true
-    const newValue = false
-    const retrievalFunction = jest.fn().mockResolvedValue(newValue)
+  // it('reruns retrieve function if value has timed out', async () => {
+  //   const key = 'NEW_COMPONENT'
+  //   const value = true
+  //   const newValue = false
+  //   const retrievalFunction = jest.fn().mockResolvedValue(newValue)
 
-    localStorage.setItem(key, JSON.stringify(value))
+  //   localStorage.setItem(key, JSON.stringify(value))
 
-    const returnedValue = await retrieve(key, retrievalFunction)
-    expect(returnedValue).toEqual(newValue)
-    expect(retrievalFunction).toBeCalledTimes(1)
-  })
+  //   const returnedValue = await retrieve(key, retrievalFunction)
+  //   expect(returnedValue).toEqual(newValue)
+  //   expect(retrievalFunction).toBeCalledTimes(1)
+  // })
 })
 
 describe('parse tests', () => {
