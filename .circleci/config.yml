@@ -12,15 +12,15 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-        name: install dependencies
-        command: make install
+          name: install dependencies
+          command: make install
       - save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run:
-        name: lint
-        command: make lint
+          name: lint
+          command: make lint
       - run:
-        name: test
-        command: make test
+          name: test
+          command: make test
