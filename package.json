@@ -1,6 +1,6 @@
 {
   "name": "laika-react",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "React Laika client",
   "homepage": "https://github.com/MEDIGO",
   "keywords": [
@@ -15,7 +15,8 @@
   "main": "./index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "./node_modules/.bin/jest --coverage"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
@@ -27,15 +28,20 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "core-js": "^3.2.1",
     "eslint": "^6.2.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "jest": "^24.9.0",
+    "node-fetch": "^2.6.0",
     "path": "^0.12.7",
     "prop-types": "^15.6.0",
     "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "regenerator-runtime": "^0.13.3",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
   }

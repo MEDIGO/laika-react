@@ -2,6 +2,10 @@ build:
 	yarn build
 .PHONY: build
 
-publish:
+publish: build
 	npm publish
 .PHONY: publish
+
+test: 
+	yarn test
+.PHONY: test
