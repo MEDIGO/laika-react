@@ -1,6 +1,6 @@
 # laika-react
 
-[![CircleCI](https://circleci.com/gh/medigo/laika-react.svg?style=svg)](https://circleci.com/gh/medigo/laika-react)
+[![CircleCI](https://circleci.com/gh/MEDIGO/laika-react.svg?style=svg)](https://circleci.com/gh/MEDIGO/laika-react)
 
 laika-react is an NPM package that connects React applications with the Laika feature flag service (https://github.com/MEDIGO/laika)
 
