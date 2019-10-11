@@ -46,11 +46,13 @@ describe('retrieve tests', () => {
 
   it('reruns retrieve function if value has timed out', async () => {
     const key = 'NEW_COMPONENT'
+    const timeout = new Date('1970-1-1').getTime()
     const value = true
     const newValue = false
     const retrievalFunction = jest.fn().mockResolvedValue(newValue)
 
     localStorage.setItem(key, JSON.stringify(value))
+    localStorage.setItem(`${key}_timeout`, timeout)
 
     const returnedValue = await retrieve(key, retrievalFunction)
     expect(returnedValue).toEqual(newValue)
