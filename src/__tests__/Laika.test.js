@@ -10,7 +10,7 @@ describe('basic test', () => {
     const div = document.createElement('div')
     ReactDOM.render(
       <Laika
-        url="http://example.com"
+        uri="http://example.com"
         env="dev"
         feature="TEST_FEATURE"
         onTrue={<div />}

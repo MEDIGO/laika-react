@@ -16,11 +16,11 @@ export default class Laika extends Component {
   }
 
   componentDidMount() {
-    const { feature, url, env } = this.props
+    const { feature, uri, env } = this.props
 
     this.setState({ loading: true })
 
-    getFeatureStatus(feature, url, env)
+    getFeatureStatus(feature, uri, env)
       .then((status) => this.setState({ [feature]: status }))
       .catch(() => this.setState({ [feature]: false }))
       .finally(() => this.setState({ loading: false, fetched: true }))
@@ -40,7 +40,7 @@ export default class Laika extends Component {
 }
 
 Laika.propTypes = {
-  url: string.isRequired,
+  uri: string.isRequired,
   env: string.isRequired,
   feature: string.isRequired,
   onTrue: oneOfType([func, shape({})]).isRequired,

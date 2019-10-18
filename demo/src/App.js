@@ -7,7 +7,7 @@ export default function App() {
   const env = 'dev'
 
   // Mock fetch responses
-  const mockFetch = (url) => {
+  const mockFetch = (uri) => {
     const headers = new Headers()
     headers.append('Content-Type', 'application/json')
 
@@ -18,9 +18,9 @@ export default function App() {
     const resTrue = new Response(true, init)
     const resFalse = new Response(false, init)
 
-    if (url.includes('NEW_FORM')) {
+    if (uri.includes('NEW_FORM')) {
       return Promise.resolve(resTrue)
-    } if (url.includes('NEW_BUTTON')) {
+    } if (uri.includes('NEW_BUTTON')) {
       return Promise.resolve(resFalse)
     }
     return Promise.reject(resTrue)
@@ -34,7 +34,7 @@ export default function App() {
       <h2>Laika React Component Demo</h2>
       <div style={{ display: 'flex' }}>
         <Laika
-          url="http://example.com"
+          uri="http://example.com"
           feature="NEW_FORM"
           env={env}
           onTrue={(
@@ -49,7 +49,7 @@ export default function App() {
           )}
         />
         <Laika
-          url="http://example.com"
+          uri="http://example.com"
           feature="NEW_BUTTON"
           env={env}
           onTrue={(
@@ -64,7 +64,7 @@ export default function App() {
           )}
         />
         <Laika
-          url="http://example.com"
+          uri="http://example.com"
           feature="NEW_INPUT"
           env={env}
           onTrue={(

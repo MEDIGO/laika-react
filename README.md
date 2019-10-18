@@ -30,7 +30,7 @@ export default function App() {
   return (
     <div>
         <Laika
-            url='http://example.com'
+            uri='http://example.com'
             feature='NEW_COMPONENT'
             env='dev'
             onTrue={NewComponent}
@@ -43,7 +43,7 @@ export default function App() {
 
 ## Props
 
-- `url` - The base url for the call to the laika server
+- `uri` - The uri for the call to the laika server
 - `feature` - The name of the feature on the laika server
 - `env` - The environment of the React component
 - `onTrue` - The new feature component to be rendered when laika returns true
