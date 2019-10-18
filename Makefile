@@ -6,7 +6,7 @@ build:
 	yarn build
 .PHONY: build
 
-publish: build
+publish:
 	npm publish
 .PHONY: publish
 
