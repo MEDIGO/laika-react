@@ -1,3 +1,5 @@
+.circleci
+.github
 coverage
 demo
 src
