@@ -33,7 +33,7 @@ export default class Laika extends Component {
 
     return (
       <div>
-        { (!loading && fetched) && <Children />}
+        { (!loading && fetched) && Children}
       </div>
     )
   }

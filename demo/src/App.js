@@ -1,5 +1,5 @@
 import React from 'react'
-import Laika from '../../src/Laika'
+import Laika from 'laika-react'
 import NewComponent from './NewComponent'
 import OldComponent from './OldComponent'
 
@@ -37,22 +37,46 @@ export default function App() {
           url="http://example.com"
           feature="NEW_FORM"
           env={env}
-          onTrue={NewComponent}
-          onFalse={OldComponent}
+          onTrue={(
+            <NewComponent
+              text="True"
+            />
+          )}
+          onFalse={(
+            <OldComponent
+              text="False"
+            />
+          )}
         />
         <Laika
           url="http://example.com"
           feature="NEW_BUTTON"
           env={env}
-          onTrue={NewComponent}
-          onFalse={OldComponent}
+          onTrue={(
+            <NewComponent
+              text="True"
+            />
+          )}
+          onFalse={(
+            <OldComponent
+              text="False"
+            />
+          )}
         />
         <Laika
           url="http://example.com"
           feature="NEW_INPUT"
           env={env}
-          onTrue={NewComponent}
-          onFalse={OldComponent}
+          onTrue={(
+            <NewComponent
+              text="True"
+            />
+          )}
+          onFalse={(
+            <OldComponent
+              text="False"
+            />
+          )}
         />
       </div>
     </div>

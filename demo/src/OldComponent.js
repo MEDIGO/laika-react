@@ -1,10 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { string } from 'prop-types'
 
-/* eslint-disable */
-export default class OldComponent extends Component {
-  render() {
-    return (
-      <div style={{ width: 50, height: 50, backgroundColor: 'red' }} />
-    )
-  }
+export default function OldComponent({ text }) {
+  return (
+    <div
+      style={{
+        width: 50,
+        height: 50,
+        lineHeight: '50px',
+        backgroundColor: 'red',
+        color: 'white',
+        textAlign: 'center',
+      }}
+    >
+      {text}
+    </div>
+  )
+}
+
+OldComponent.propTypes = {
+  text: string.isRequired,
 }
