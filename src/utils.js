@@ -26,11 +26,11 @@ export const parse = (res) => {
   return res.headers.get('content-type').startsWith('application/json') ? res.json() : null
 }
 
-export const getLaikaFeatureStatus = (feature, url, env) => {
+export const getLaikaFeatureStatus = (feature, uri, env) => {
   const opts = {
     method: 'GET',
   }
-  const laikaUrl = `${url}/api/features/${feature}/status/${env}`
+  const laikaUrl = `${uri}/api/features/${feature}/status/${env}`
   return fetch(laikaUrl, opts)
     .then((res) => {
       const body = parse(res)
@@ -45,8 +45,8 @@ export const getLaikaFeatureStatus = (feature, url, env) => {
     .catch(() => false)
 }
 
-export const getFeatureStatus = (feature, url, env) => Promise.resolve(retrieve(
+export const getFeatureStatus = (feature, uri, env) => Promise.resolve(retrieve(
   feature,
-  () => getLaikaFeatureStatus(feature, url, env),
+  () => getLaikaFeatureStatus(feature, uri, env),
   1.5 * 60 * 1000,
 ))

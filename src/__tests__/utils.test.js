@@ -79,7 +79,7 @@ describe('parse tests', () => {
 
 describe('getLaikaFeatureTests', () => {
   const feature = 'NEW_COMPONENT'
-  const url = 'http://example.com'
+  const uri = 'http://example.com'
   const env = 'dev'
 
   const mockFetch = (status, body, ok) => {
@@ -102,7 +102,7 @@ describe('getLaikaFeatureTests', () => {
     const body = true
     global.fetch = mockFetch(status, body, true)
 
-    const laikaStatus = await getLaikaFeatureStatus(feature, url, env)
+    const laikaStatus = await getLaikaFeatureStatus(feature, uri, env)
     expect(laikaStatus).toEqual(true)
   })
 
@@ -111,7 +111,7 @@ describe('getLaikaFeatureTests', () => {
     const body = false
     global.fetch = mockFetch(status, body, true)
 
-    const laikaStatus = await getLaikaFeatureStatus(feature, url, env)
+    const laikaStatus = await getLaikaFeatureStatus(feature, uri, env)
     expect(laikaStatus).toEqual(false)
   })
 
@@ -120,7 +120,7 @@ describe('getLaikaFeatureTests', () => {
     const body = true
     global.fetch = mockFetch(status, body, true)
 
-    const laikaStatus = await getLaikaFeatureStatus(feature, url, env)
+    const laikaStatus = await getLaikaFeatureStatus(feature, uri, env)
     expect(laikaStatus).toEqual(false)
   })
 
@@ -141,7 +141,7 @@ describe('getLaikaFeatureTests', () => {
       }),
     )
 
-    const laikaStatus = await getLaikaFeatureStatus(feature, url, env)
+    const laikaStatus = await getLaikaFeatureStatus(feature, uri, env)
     expect(laikaStatus).toEqual(false)
   })
 
@@ -151,13 +151,13 @@ describe('getLaikaFeatureTests', () => {
     const ok = false
     global.fetch = mockFetch(status, body, ok)
 
-    const laikaStatus = await getLaikaFeatureStatus(feature, url, env)
+    const laikaStatus = await getLaikaFeatureStatus(feature, uri, env)
     expect(laikaStatus).toEqual(false)
   })
 
   it('returns false on err', async () => {
     global.fetch = jest.fn().mockRejectedValue({})
-    const laikaStatus = await getLaikaFeatureStatus(feature, url, env)
+    const laikaStatus = await getLaikaFeatureStatus(feature, uri, env)
     expect(laikaStatus).toEqual(false)
   })
 })
