@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build&publish:
+  publish:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
