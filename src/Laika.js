@@ -32,9 +32,9 @@ export default class Laika extends Component {
     const Children = (this.state && this.state[feature]) ? onTrue : onFalse
 
     return (
-      <div>
+      <>
         { (!loading && fetched) && Children}
-      </div>
+      </>
     )
   }
 }
