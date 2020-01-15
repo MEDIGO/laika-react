@@ -5,8 +5,8 @@ module.exports = {
   entry: './src/Laika.js',
   output: {
     path: path.resolve(''),
-    filename: 'index.js',
-    libraryTarget: 'commonjs2',
+    filename: 'laika.production.js',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -23,6 +23,7 @@ module.exports = {
     ],
   },
   externals: {
-    react: 'commonjs react',
+    react: 'react',
+    'react-dom': 'react-dom',
   },
 }
