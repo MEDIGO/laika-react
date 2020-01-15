@@ -1,12 +1,12 @@
 const path = require('path')
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/Laika.js',
   output: {
     path: path.resolve(''),
     filename: 'index.js',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -23,6 +23,7 @@ module.exports = {
     ],
   },
   externals: {
-    react: 'commonjs react',
+    react: 'react',
+    'react-dom': 'react-dom',
   },
 }
