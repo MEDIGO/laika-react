@@ -1,5 +1,6 @@
 # Component index
-/index.js
+/laika.development.js
+/laika.production.js
 
 # Logs
 logs

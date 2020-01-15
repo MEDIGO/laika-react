@@ -4,7 +4,6 @@
   "description": "Laika React Component Demo",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
     "start": "webpack-dev-server  --mode development --hot --inline --port 3000"
   },
   "dependencies": {

@@ -9,5 +9,6 @@ src
 .gitignore
 jest.config.js
 Makefile
-webpack.config.js
+webpack.development.config.js
+webpack.production.config.js
 mock.js

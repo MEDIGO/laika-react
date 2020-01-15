@@ -1,11 +1,11 @@
 const path = require('path')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/Laika.js',
   output: {
     path: path.resolve(''),
-    filename: 'index.js',
+    filename: 'laika.production.js',
     libraryTarget: 'umd',
   },
   module: {

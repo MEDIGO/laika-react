@@ -15,7 +15,7 @@
   "main": "./index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.development.config.js && webpack --config webpack.production.config.js",
     "lint": "./node_modules/.bin/eslint . --fix",
     "test": "./node_modules/.bin/jest --coverage"
   },
