@@ -16,14 +16,33 @@ export default class Laika extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true
     const { feature, uri, env } = this.props
 
-    this.setState({ loading: true })
+    if (this._isMounted) {
+      this.setState({ loading: true })
+    }
 
     getFeatureStatus(feature, uri, env)
-      .then((status) => this.setState({ [feature]: status }))
-      .catch(() => this.setState({ [feature]: false }))
-      .finally(() => this.setState({ loading: false, fetched: true }))
+      .then((status) => {
+        if (this._isMounted) {
+          this.setState({ [feature]: status })
+        }
+      })
+      .catch(() => {
+        if (this._isMounted) {
+          this.setState({ [feature]: false })
+        }
+      })
+      .finally(() => {
+        if (this._isMounted) {
+          this.setState({ loading: false, fetched: true })
+        }
+      })
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false
   }
 
   render() {
