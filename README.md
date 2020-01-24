@@ -33,8 +33,8 @@ export default function App() {
             uri='http://example.com'
             feature='NEW_COMPONENT'
             env='dev'
-            onTrue={NewComponent}
-            onFalse={OldComponent}
+            onTrue={<NewComponent />}
+            onFalse={<OldComponent />}
         />
     </div>
   )
