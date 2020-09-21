@@ -50,7 +50,7 @@ export default function App() {
 - `onFalse` - The old component to be rendered when laika returns false
 
 ## getFeatureStatus
-laika-react also exposes `getFeatureStatus(feature: string, uri: string, env: string)` which returns Promise<bool>.
+laika-react also exposes `getFeatureStatus(feature: string, uri: string, env: string): Promise<bool>`.
 This allows different conditions to be run based on the feature's status instead of just rendering React components. e.g.
 
 ```
