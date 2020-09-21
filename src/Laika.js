@@ -1,6 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import React from 'react' // eslint-disable-line import/no-unresolved
+import React from 'react'
 import {
   shape, string, func, oneOfType,
 } from 'prop-types'
