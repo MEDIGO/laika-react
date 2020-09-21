@@ -62,8 +62,7 @@ getFeatureStatus('NEW_FEATURE', 'http://example.com', 'prod')
 ```
 
 ## Demo
-To try out the laika-react demo
-
+To try out the demo
 `cd demo`
 `yarn install`
 `yarn start`

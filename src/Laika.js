@@ -1,6 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import React, { Component } from 'react'
+import React from 'react'
 import {
   shape, string, func, oneOfType,
 } from 'prop-types'
@@ -8,56 +8,39 @@ import { getFeatureStatus } from './utils'
 
 export { getFeatureStatus }
 
-export default class Laika extends Component {
-  constructor() {
-    super()
-    this.state = {
-      loading: false,
-      fetched: false,
+export default function Laika(props) {
+  const [loading, setLoading] = React.useState(false)
+  const [fetched, setFetched] = React.useState(false)
+  const [status, setStatus] = React.useState(false)
+
+  const {
+    feature, uri, env, onTrue, onFalse,
+  } = props
+
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true)
+        const s = await getFeatureStatus(feature, uri, env)
+        setStatus(s)
+      } catch (err) {
+        setStatus(false)
+      } finally {
+        setLoading(false)
+        setFetched(true)
+      }
     }
-  }
 
-  componentDidMount() {
-    this._isMounted = true
-    const { feature, uri, env } = this.props
+    fetchData()
+  }, [env, feature, uri])
 
-    if (this._isMounted) {
-      this.setState({ loading: true })
-    }
+  const children = status ? onTrue : onFalse
 
-    getFeatureStatus(feature, uri, env)
-      .then((status) => {
-        if (this._isMounted) {
-          this.setState({ [feature]: status })
-        }
-      })
-      .catch(() => {
-        if (this._isMounted) {
-          this.setState({ [feature]: false })
-        }
-      })
-      .finally(() => {
-        if (this._isMounted) {
-          this.setState({ loading: false, fetched: true })
-        }
-      })
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false
-  }
-
-  render() {
-    const { loading, fetched } = this.state
-    const { onTrue, onFalse, feature } = this.props
-    const Children = (this.state && this.state[feature]) ? onTrue : onFalse
-
-    return (
-      <>
-        { (!loading && fetched) && Children}
-      </>
-    )
-  }
+  return (
+    <>
+      { (!loading && fetched) && children}
+    </>
+  )
 }
 
 Laika.propTypes = {

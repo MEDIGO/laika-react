@@ -7,7 +7,7 @@
     "start": "webpack-dev-server  --mode development --hot --inline --port 3000"
   },
   "dependencies": {
-    "laika-react": "file:../",
+    "laika-react": "^0.1.7",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
