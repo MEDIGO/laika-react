@@ -1,10 +1,11 @@
 import React from 'react'
-import Laika from 'laika-react'
+import Laika, { getFeatureStatus } from 'laika-react'
 import NewComponent from './NewComponent'
 import OldComponent from './OldComponent'
 
 export default function App() {
   const env = 'dev'
+  const uri = 'http://example.com'
 
   // Mock fetch responses
   const mockFetch = (uri) => {
@@ -22,6 +23,8 @@ export default function App() {
       return Promise.resolve(resTrue)
     } if (uri.includes('NEW_BUTTON')) {
       return Promise.resolve(resFalse)
+    } if (uri.includes('NEW_ALERT')) {
+      return Promise.resolve(resTrue)
     }
     return Promise.reject(resTrue)
   }
@@ -29,12 +32,16 @@ export default function App() {
   // Set global fetch to mockFetch function
   global.fetch = mockFetch
 
+  getFeatureStatus('NEW_ALERT', uri, env).then(status => {
+    if (status) console.log('NEW_ALERT is enabled')
+  })
+
   return (
     <div>
       <h2>Laika React Component Demo</h2>
       <div style={{ display: 'flex' }}>
         <Laika
-          uri="http://example.com"
+          uri={uri}
           feature="NEW_FORM"
           env={env}
           onTrue={(
@@ -49,7 +56,7 @@ export default function App() {
           )}
         />
         <Laika
-          uri="http://example.com"
+          uri={uri}
           feature="NEW_BUTTON"
           env={env}
           onTrue={(
@@ -64,7 +71,7 @@ export default function App() {
           )}
         />
         <Laika
-          uri="http://example.com"
+          uri={uri}
           feature="NEW_INPUT"
           env={env}
           onTrue={(

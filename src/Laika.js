@@ -6,6 +6,8 @@ import {
 } from 'prop-types'
 import { getFeatureStatus } from './utils'
 
+export { getFeatureStatus }
+
 export default class Laika extends Component {
   constructor() {
     super()

@@ -49,6 +49,30 @@ export default function App() {
 - `onTrue` - The new feature component to be rendered when laika returns true
 - `onFalse` - The old component to be rendered when laika returns false
 
+## getFeatureStatus
+laika-react also exposes `getFeatureStatus(feature: string, uri: string, env: string): Promise<bool>`.
+This allows different conditions to be run based on the feature's status instead of just rendering React components. e.g.
+
+```
+import { getFeatureStatus } from 'laika-react'
+
+getFeatureStatus('NEW_FEATURE', 'http://example.com', 'prod')
+  .then(status => {
+    if (status) {
+      console.log('feature enabled')
+    }
+  })
+```
+
+## Demo
+To try out the laika-react demo
+
+`cd demo`
+`yarn install`
+`yarn start`
+
+and the demo will be available at `http://localhost:3000/`
+
 ## License
 
 MIT Licensed. Copyright (c) Medigo GmbH 2019.
