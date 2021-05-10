@@ -3478,10 +3478,10 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
 
-laika-react@^0.1.6-alpha.2:
-  version "0.1.6-alpha.2"
-  resolved "https://registry.yarnpkg.com/laika-react/-/laika-react-0.1.6-alpha.2.tgz#1cb4a3c5c91b4099cda1c0e896efd41fd52ce3a7"
-  integrity sha512-tXvWSjELEUDrEp55fX+8KQg+YfnH6wkxfU7bJFr8wlUVPRpoj4P9O/wFQU5ykHsSo33fhCYM7aww/FAHu2KtjQ==
+laika-react@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/laika-react/-/laika-react-0.1.7.tgz#b33aff8df25718627fd1d070b153ab93dcb11af3"
+  integrity sha512-/YVLlYnGQfqAUKQJ52Q64nui8Ar5ms/XMBV4L3WpV6DThEL1QtNQWwjlBt6ZXsJRZXtrItwdRJjooX28Y16WRg==
 
 lcid@^2.0.0:
   version "2.0.0"
@@ -3549,9 +3549,9 @@ locate-path@^3.0.0:
     path-exists "^3.0.0"
 
 lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.3:
-  version "4.17.19"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
-  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 loglevel@^1.6.3:
   version "1.6.3"
