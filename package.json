@@ -1,6 +1,6 @@
 {
   "name": "laika-react",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "React Laika client",
   "homepage": "https://github.com/MEDIGO",
   "keywords": [
@@ -8,6 +8,8 @@
     "Laika",
     "npm"
   ],
+  "types": "types/index.d.ts",
+  "typings": "types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/MEDIGO/laika-react"
@@ -19,6 +21,12 @@
     "lint": "./node_modules/.bin/eslint . --fix",
     "test": "./node_modules/.bin/jest --coverage"
   },
+  "files": [
+    "/laika.development.js",
+    "/laika.production.js",
+    "/types",
+    "/index.js"
+  ],
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -28,6 +36,7 @@
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
+    "@types/react": "^17.0.19",
     "babel-loader": "^8.0.6",
     "core-js": "^3.2.1",
     "eslint": "^6.2.2",

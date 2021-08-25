@@ -2,7 +2,7 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import React from 'react'
 import {
-  shape, string, func, oneOfType,
+  shape, string, func, oneOfType, bool,
 } from 'prop-types'
 import { getFeatureStatus } from './utils'
 
@@ -47,6 +47,6 @@ Laika.propTypes = {
   uri: string.isRequired,
   env: string.isRequired,
   feature: string.isRequired,
-  onTrue: oneOfType([func, shape({})]).isRequired,
-  onFalse: oneOfType([func, shape({})]).isRequired,
+  onTrue: oneOfType([func, shape({}), bool]).isRequired,
+  onFalse: oneOfType([func, shape({}), bool]).isRequired,
 }
