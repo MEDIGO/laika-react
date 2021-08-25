@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx": "preserve",
+    "strict": true
+  },
+  "files": [
+    "index.d.ts",
+  ]
+}
