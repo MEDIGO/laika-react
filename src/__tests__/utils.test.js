@@ -58,6 +58,16 @@ describe('retrieve tests', () => {
     expect(returnedValue).toEqual(newValue)
     expect(retrievalFunction).toBeCalledTimes(1)
   })
+
+  it('runs retrieve function if no localstorage values present', async () => {
+    const key = 'NEW_COMPONENT'
+    const newValue = false
+    const retrievalFunction = jest.fn().mockResolvedValue(newValue)
+
+    const returnedValue = await retrieve(key, retrievalFunction)
+    expect(returnedValue).toEqual(newValue)
+    expect(retrievalFunction).toBeCalledTimes(1)
+  })
 })
 
 describe('parse tests', () => {

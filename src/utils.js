@@ -9,9 +9,9 @@ export const store = (key, value) => {
 }
 
 export const retrieve = (key, retrievalFunction, timeout = DEFAULT_TIMEOUT) => {
-  const ts = localStorage.getItem(timeoutKey(key)) || new Date('1970-1-1').getTime()
+  const ts = localStorage.getItem(timeoutKey(key))
 
-  if (ts && (Date.now() - ts) > timeout) {
+  if (!ts || (Date.now() - ts) > timeout) {
     return retrievalFunction()
       .then((response) => store(key, response))
       .catch(() => {
