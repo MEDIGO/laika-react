@@ -7,7 +7,7 @@ build:
 .PHONY: build
 
 publish:
-	npm publish
+	yarn npm publish
 .PHONY: publish
 
 lint:
