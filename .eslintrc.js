@@ -72,6 +72,7 @@ module.exports = {
         ],
       },
     ],
+    '@typescript-eslint/strict-boolean-expressions': 'error',
   },
   env: {
     browser: true,
@@ -99,6 +100,10 @@ module.exports = {
     },
   ],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: path.resolve(__dirname, 'tsconfig.eslint.json'),
+    // tsconfigRootDir: path.resolve(__dirname),
+  },
   globals: {
     __webpack_hash__: 'readonly',
     JSX: true,

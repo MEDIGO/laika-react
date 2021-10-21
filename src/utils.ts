@@ -1,5 +1,4 @@
-export const DEFAULT_TIMEOUT = 60 * 60 * 1000
-export const FEATURE_TIMEOUT = 1.5 * 60 * 1000
+export const DEFAULT_TIMEOUT = 1.5 * 60 * 1000
 
 function timeoutKey(key: string) {
   return `${key}_timeout`
@@ -16,17 +15,14 @@ async function retrieve(
   retrievalFunction: () => Promise<boolean>,
   timeout = DEFAULT_TIMEOUT,
 ): Promise<boolean> {
-  console.log('Running retrieve')
   const ts = localStorage.getItem(timeoutKey(key))
   const data = localStorage.getItem(key)
 
-  if (!ts || Date.now() - +ts > timeout || !data) {
+  if (ts === null || Date.now() - +ts > timeout || data === null) {
     const value = await retrievalFunction()
     store(key, value)
     return value
   }
-
-  console.log('Loading from cache')
 
   return JSON.parse(data)
 }
@@ -34,7 +30,7 @@ async function retrieve(
 async function parseLaikaResponse(res: Response): Promise<string> {
   const contentType = res.headers.get('content-type')
 
-  if (!contentType || !contentType.startsWith('application/json')) {
+  if (contentType === null || !contentType.startsWith('application/json')) {
     throw new Error(
       `expected content-type to be application/json, got: ${contentType}`,
     )
@@ -74,10 +70,11 @@ export async function getFeatureStatus(
   feature: string,
   uri: string,
   env: string,
+  timeout: number = DEFAULT_TIMEOUT,
 ): Promise<boolean> {
   return retrieve(
     feature,
     () => getLaikaFeatureStatus(feature, uri, env),
-    1.5 * 60 * 1000,
+    timeout,
   )
 }
