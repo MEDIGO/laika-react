@@ -23,8 +23,7 @@
     "test": "cypress run-ct"
   },
   "files": [
-    "/dist",
-    "/types"
+    "/dist"
   ],
   "peerDependencies": {
     "react": "^16.9.0",
