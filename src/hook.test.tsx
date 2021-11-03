@@ -21,6 +21,19 @@ describe('useLaika', () => {
     cy.get('div').contains('Enabled')
   })
 
+  it('with-parameters-disabled', () => {
+    mockRequest('useLaika-test', uri, 'test', false)
+
+    function TestComp() {
+      const [flag] = useLaika('useLaika-test', uri, 'test')
+
+      return <div>{flag ? 'Enabled' : 'Disabled'}</div>
+    }
+
+    mount(<TestComp />)
+    cy.get('div').contains('Disabled')
+  })
+
   it('with-context', () => {
     mockRequest('useLaika-test', uri, 'test', true)
 
