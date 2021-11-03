@@ -8,7 +8,7 @@ import React from 'react'
 describe('useLaika', () => {
   const uri = 'https://laika.example.com'
 
-  it('with parameters', () => {
+  it('with-parameters', () => {
     mockRequest('useLaika-test', uri, 'test', true)
 
     function TestComp() {
@@ -21,7 +21,7 @@ describe('useLaika', () => {
     cy.get('div').contains('Enabled')
   })
 
-  it('with context', () => {
+  it('with-context', () => {
     mockRequest('useLaika-test', uri, 'test', true)
 
     function TestComp() {
