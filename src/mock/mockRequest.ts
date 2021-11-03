@@ -12,5 +12,6 @@ export function mockRequest(
     headers: {
       'content-type': 'application/json',
     },
+    delay: 500,
   })
 }

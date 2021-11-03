@@ -1,22 +1,22 @@
 import { cy, describe, it } from 'local-cypress'
-import { mockRequest } from './mock/mockRequest'
-import { getFeatureStatus } from './utils'
+import { mockRequest } from 'lib/mock/mockRequest'
+import { getFeatureStatus } from 'lib/utils'
 
 describe('Utilities', () => {
   describe('getFeatureStatus', () => {
-    it('acts on false', () => {
+    it('acts-on-false', () => {
       mockRequest('cache-test', '', 'test', false)
         .then(() => getFeatureStatus('cache-test', '', 'test'))
         .should('eq', false)
     })
 
-    it('acts on true', () => {
+    it('acts-on-true', () => {
       mockRequest('cache-test', '', 'test', true)
         .then(() => getFeatureStatus('cache-test', '', 'test'))
         .should('eq', true)
     })
 
-    it('caches the flag', () => {
+    it('caches-the-flag', () => {
       cy.clock()
       mockRequest('cache-test', '', 'test', true)
         .then(() => getFeatureStatus('cache-test', '', 'test'))
