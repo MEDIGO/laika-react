@@ -74,7 +74,35 @@ function SomeComponent() {
 }
 ```
 
-### getFeatureStatus
+### Component
+
+```tsx
+import React from 'react'
+import { useLaika, Config, LaikaContext, Laika } from 'laika-react'
+/* ... import your components ... */
+
+const uri = 'https://laika.example.com'
+const env = 'prod'
+
+function SomeComponent() {
+  return (
+    <div>
+      <Laika
+        feature="component-test"
+        uri={uri} // You can leave out uri and env just like with the 
+                  // hook and have them be loaded from the context if you provided one
+        env={env}
+        onTrue={<NewComponent />}
+        onFalse={<OldComponent />}
+      />
+    </div>
+  )
+}
+```
+
+
+
+### Promise (getFeatureStatus)
 
 ```ts
 import { getFeatureStatus } from 'laika-react'
@@ -130,6 +158,22 @@ Parameter | Function
 `env` | The Laika env (for example `test` or `prod`)
 `cacheTimeout` | The time how long a requested flag should be cached (default: 1.5 minutes).<br/>The flags and cache timestamps are saved in localstorage.
 ***Return values*** |  Returns an array with 2 entries:<br/>1. `state`: The current state of the flag (`true` or `false`, defaults to `false` while the request is still resolving)<br/>2. `isLoading`: The second entry is true if it's still requesting the flag from the server and false if it's finished loading (useful for displaying loading indicators for example)
+
+### `Laika` component
+
+```tsx
+interface LaikaProps {
+  feature: string
+  env?: string
+  uri?: string
+  cacheTimeout?: number,
+  onTrue: React.ReactElement | false
+  onFalse: React.ReactElement | false
+}
+```
+
+Works analog to the `useLaika` hook, except that it's a component.
+It will not render any children while the request is still loading the feature flag from Laika.
 
 ### `getFeatureStatus` utility function
 

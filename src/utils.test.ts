@@ -1,6 +1,6 @@
 import { cy, describe, it } from 'local-cypress'
-import { mockRequest } from './mock/mockRequest'
-import { getFeatureStatus } from './utils'
+import { mockRequest } from 'lib/mock/mockRequest'
+import { getFeatureStatus } from 'lib/utils'
 
 describe('Utilities', () => {
   describe('getFeatureStatus', () => {

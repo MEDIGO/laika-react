@@ -1,34 +1,30 @@
 import { mount } from '@cypress/react'
+import { Laika } from 'lib/component'
 import { Config, LaikaContext } from 'lib/config'
-import { useLaika } from 'lib/hook'
 import { mockRequest } from 'lib/mock/mockRequest'
 import { cy, describe, it } from 'local-cypress'
 import React from 'react'
 
-describe('useLaika', () => {
+describe('component', () => {
   const uri = 'https://laika.example.com'
 
   it('with parameters', () => {
-    mockRequest('useLaika-test', uri, 'test', true)
+    mockRequest('component-test', uri, 'test', true)
 
-    function TestComp() {
-      const [flag] = useLaika('useLaika-test', uri, 'test')
-
-      return <div>{flag ? 'Enabled' : 'Disabled'}</div>
-    }
-
-    mount(<TestComp />)
+    mount(
+      <Laika
+        feature="component-test"
+        uri={uri}
+        env="test"
+        onTrue={<div>Enabled</div>}
+        onFalse={<div>Disabled</div>}
+      />,
+    )
     cy.get('div').contains('Enabled')
   })
 
   it('with context', () => {
-    mockRequest('useLaika-test', uri, 'test', true)
-
-    function TestComp() {
-      const [flag] = useLaika('useLaika-test')
-
-      return <div>{flag ? 'Enabled' : 'Disabled'}</div>
-    }
+    mockRequest('component-test', uri, 'test', true)
 
     const ctx: Config = {
       env: 'test',
@@ -37,7 +33,11 @@ describe('useLaika', () => {
 
     mount(
       <LaikaContext.Provider value={ctx}>
-        <TestComp />
+        <Laika
+          feature="component-test"
+          onTrue={<div>Enabled</div>}
+          onFalse={<div>Disabled</div>}
+        />
       </LaikaContext.Provider>,
     )
     cy.get('div').contains('Enabled')
