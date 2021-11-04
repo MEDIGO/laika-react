@@ -1,6 +1,6 @@
 {
   "name": "laika-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React Laika client",
   "homepage": "https://github.com/MEDIGO",
   "keywords": [
@@ -53,7 +53,6 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
-    "lib": "link:./src",
     "local-cypress": "^1.2.2",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.4.1",

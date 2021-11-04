@@ -1,4 +1,4 @@
-export { getFeatureStatus } from 'lib/utils'
-export { useLaika } from 'lib/hook'
-export { Config, LaikaContext } from 'lib/config'
-export { Laika } from 'lib/component'
+export { getFeatureStatus } from './utils'
+export { useLaika } from './hook'
+export { Config, LaikaContext } from './config'
+export { Laika } from './component'

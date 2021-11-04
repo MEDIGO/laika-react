@@ -1,6 +1,6 @@
 import { bool, node, number, oneOfType, string } from 'prop-types'
 import React from 'react'
-import { useLaika } from 'lib/hook'
+import { useLaika } from './hook'
 
 export interface LaikaProps {
   feature: string
