@@ -1,6 +1,6 @@
-import { LaikaContext } from 'lib/config'
-import { DEFAULT_TIMEOUT, getFeatureStatus } from 'lib/utils'
 import { useContext, useEffect, useRef, useState } from 'react'
+import { LaikaContext } from './config'
+import { DEFAULT_TIMEOUT, getFeatureStatus } from './utils'
 
 export function useLaika(
   feature: string,

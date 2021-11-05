@@ -1,9 +1,9 @@
 import { mount } from '@cypress/react'
-import { Config, LaikaContext } from 'lib/config'
-import { useLaika } from 'lib/hook'
-import { mockRequest } from 'lib/mock/mockRequest'
 import { cy, describe, it } from 'local-cypress'
 import React from 'react'
+import { Config, LaikaContext } from './config'
+import { useLaika } from './hook'
+import { mockRequest } from './mock/mockRequest'
 
 describe('useLaika', () => {
   const uri = 'https://laika.example.com'
