@@ -18,5 +18,4 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: make install
-      - run: make lint
       - run: make test

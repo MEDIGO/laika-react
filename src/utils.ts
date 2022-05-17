@@ -1,33 +1,63 @@
 export const DEFAULT_TIMEOUT = 1.5 * 60 * 1000
 
-function timeoutKey(key: string) {
-  return `${key}_timeout`
+const laikaKey = (key: string) => `laika_${key}`
+
+type LaikaInfo = {
+  value: boolean
+  timestamp: number
+  env: string
 }
 
-function store(key: string, value: boolean) {
-  localStorage.setItem(key, JSON.stringify(value))
-  localStorage.setItem(timeoutKey(key), String(Date.now()))
+function save(key: string, env: string, value: boolean) {
+  localStorage.setItem(
+    laikaKey(key),
+    JSON.stringify({
+      value,
+      timestamp: Date.now(),
+      env,
+    }),
+  )
   return value
 }
 
-async function retrieve(
-  key: string,
-  retrievalFunction: () => Promise<boolean>,
-  timeout = DEFAULT_TIMEOUT,
-): Promise<boolean> {
-  const ts = localStorage.getItem(timeoutKey(key))
-  const data = localStorage.getItem(key)
+const isValidLaika = (data: any): data is LaikaInfo =>
+  data &&
+  typeof data === 'object' &&
+  typeof data.value === 'boolean' &&
+  typeof data.timestamp === 'number' &&
+  typeof data.env === 'string'
 
-  if (ts === null || Date.now() - +ts > timeout || data === null) {
-    const value = await retrievalFunction()
-    store(key, value)
-    return value
+export function loadCached(
+  key: string,
+  env: string,
+  timeout = DEFAULT_TIMEOUT,
+): boolean | undefined {
+  const item = localStorage.getItem(laikaKey(key))
+
+  if (!item) {
+    return undefined
   }
 
-  return JSON.parse(data)
+  const data = JSON.parse(item)
+
+  if (!isValidLaika(data)) {
+    return undefined
+  }
+
+  const { value, timestamp, env: itemEnv } = data
+
+  if (env !== itemEnv) {
+    return undefined
+  }
+
+  if (Date.now() - Number(timestamp) > timeout) {
+    return undefined
+  }
+
+  return value
 }
 
-async function parseLaikaResponse(res: Response): Promise<string> {
+async function parseResponse(res: Response): Promise<string> {
   const contentType = res.headers.get('content-type')
 
   if (contentType === null || !contentType.startsWith('application/json')) {
@@ -39,7 +69,7 @@ async function parseLaikaResponse(res: Response): Promise<string> {
   return res.json()
 }
 
-async function getLaikaFeatureStatus(
+async function fetchStatus(
   feature: string,
   uri: string,
   env: string,
@@ -57,7 +87,7 @@ async function getLaikaFeatureStatus(
     throw new Error('response is not ok')
   }
 
-  const body = await parseLaikaResponse(res)
+  const body = await parseResponse(res)
 
   if (body === undefined) {
     throw new Error('Response Body is missing')
@@ -72,9 +102,12 @@ export async function getFeatureStatus(
   env: string,
   timeout: number = DEFAULT_TIMEOUT,
 ): Promise<boolean> {
-  return retrieve(
-    feature,
-    () => getLaikaFeatureStatus(feature, uri, env),
-    timeout,
-  )
+  const cached = loadCached(feature, env, timeout)
+  if (cached !== undefined) {
+    return cached
+  }
+
+  const result = await fetchStatus(feature, uri, env)
+  save(feature, env, result)
+  return result
 }

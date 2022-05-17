@@ -1,6 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { LaikaContext } from './config'
-import { DEFAULT_TIMEOUT, getFeatureStatus } from './utils'
+import { DEFAULT_TIMEOUT, getFeatureStatus, loadCached } from './utils'
+
+type LaikaState = {
+  enabled: boolean
+  loading: boolean
+}
 
 export function useLaika(
   feature: string,
@@ -8,9 +13,6 @@ export function useLaika(
   env?: string,
   cacheTimeout?: number,
 ): [boolean, boolean] {
-  const [enabled, setEnabled] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-
   const config = useContext(LaikaContext)
 
   const _uri = uri ?? config.uri
@@ -23,21 +25,42 @@ export function useLaika(
     )
   }
 
-  const isMounted = useRef(false)
+  const [state, setState] = useState<LaikaState>(() => {
+    const cached = loadCached(feature, _env, cacheTimeout)
 
-  getFeatureStatus(feature, _uri, _env, _to).then((isEnabled) => {
-    if (isMounted.current) {
-      setIsLoading(false)
-      setEnabled(isEnabled)
+    if (cached !== undefined) {
+      return {
+        enabled: cached,
+        loading: false,
+      }
+    }
+
+    return {
+      enabled: false,
+      loading: true,
     }
   })
 
+  const isMounted = useRef(false)
+
   useEffect(() => {
     isMounted.current = true
+
+    if (state.loading) {
+      getFeatureStatus(feature, _uri, _env, _to).then((isEnabled) => {
+        if (isMounted.current) {
+          setState({
+            enabled: isEnabled,
+            loading: false,
+          })
+        }
+      })
+    }
+
     return () => {
       isMounted.current = false
     }
   }, [])
 
-  return [enabled, isLoading]
+  return [state.enabled, state.loading]
 }
