@@ -75,25 +75,29 @@ async function fetchStatus(
   env: string,
 ): Promise<boolean> {
   const laikaUrl = `${uri}/api/features/${feature}/status/${env}`
-  const res = await fetch(laikaUrl, {
-    method: 'GET',
-  })
+  try {
+    const res = await fetch(laikaUrl, {
+      method: 'GET',
+    })
 
-  if (res.status !== 200) {
-    throw new Error(`expected status code 200, got ${res.status}`)
+    if (res.status !== 200) {
+      throw new Error(`expected status code 200, got ${res.status}`)
+    }
+
+    if (!res.ok) {
+      throw new Error('response is not ok')
+    }
+
+    const body = await parseResponse(res)
+
+    if (body === undefined) {
+      throw new Error('Response Body is missing')
+    }
+    return Boolean(body)
+  } catch {
+    return false
   }
-
-  if (!res.ok) {
-    throw new Error('response is not ok')
-  }
-
-  const body = await parseResponse(res)
-
-  if (body === undefined) {
-    throw new Error('Response Body is missing')
-  }
-
-  return Boolean(body)
+  return false
 }
 
 export async function getFeatureStatus(
