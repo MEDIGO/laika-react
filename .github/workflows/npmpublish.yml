@@ -10,26 +10,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           registry-url: https://registry.npmjs.org/
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: make install
-      
+
       - name: Build project
         run: make build
-      
+
       - name: Run linting
         run: make lint
-      
+
       - name: Run tests
         run: make test
-      
+
       - name: Publish package
         run: make publish
         env:
