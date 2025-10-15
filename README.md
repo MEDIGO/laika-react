@@ -1,4 +1,10 @@
 # laika-react
+
+[![CI](https://github.com/MEDIGO/laika-react/workflows/test/badge.svg)](https://github.com/MEDIGO/laika-react/actions)
+[![codecov](https://codecov.io/gh/MEDIGO/laika-react/branch/main/graph/badge.svg)](https://codecov.io/gh/MEDIGO/laika-react)
+[![npm version](https://img.shields.io/npm/v/laika-react.svg)](https://www.npmjs.com/package/laika-react)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This NPM package connects React applications with the Laika feature flag service (https://github.com/MEDIGO/laika)
 
 **Supports React 17 and React 18**
