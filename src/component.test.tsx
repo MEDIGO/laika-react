@@ -1,5 +1,4 @@
 import { mount } from '@cypress/react'
-import { cy, describe, it } from 'local-cypress'
 import React from 'react'
 import { Laika } from './component'
 import { Config, LaikaContext } from './config'

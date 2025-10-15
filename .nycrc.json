@@ -1,0 +1,12 @@
+{
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/mock/**/*"],
+  "reporter": ["text", "text-summary", "html", "lcov"],
+  "report-dir": "coverage",
+  "all": true,
+  "check-coverage": true,
+  "statements": 90,
+  "branches": 80,
+  "functions": 100,
+  "lines": 90
+}

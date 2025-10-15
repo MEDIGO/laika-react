@@ -1,5 +1,3 @@
-import { cy } from 'local-cypress'
-
 export function mockRequest(
   feature: string,
   uri: string,

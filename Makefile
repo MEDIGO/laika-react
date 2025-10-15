@@ -1,19 +1,27 @@
 install:
-	yarn install
+	npm install
 .PHONY: install
 
 build:
-	yarn build
+	npm run build
 .PHONY: build
 
 publish:
-	yarn npm publish
+	npm publish
 .PHONY: publish
 
 lint:
-	yarn lint
+	npm run lint
 .PHONY: lint
 
+format:
+	npm run format:write
+.PHONY: format
+
+format-check:
+	npm run format:check
+.PHONY: format-check
+
 test: 
-	yarn test
+	npm test
 .PHONY: test

@@ -1,9 +1,18 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    "target": "es5",
-    "lib": ["es5", "dom"],
-    "esModuleInterop": true
+    "target": "es2018",
+    "lib": ["es2018", "dom"],
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "types": ["cypress", "node"],
+    "allowJs": true,
+    "isolatedModules": false
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "../src/**/*.ts", "../src/**/*.tsx"],
+  "exclude": ["../node_modules", "../dist"]
 }

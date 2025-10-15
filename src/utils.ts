@@ -20,12 +20,15 @@ function save(key: string, env: string, value: boolean) {
   return value
 }
 
-const isValidLaika = (data: any): data is LaikaInfo =>
-  data &&
-  typeof data === 'object' &&
-  typeof data.value === 'boolean' &&
-  typeof data.timestamp === 'number' &&
-  typeof data.env === 'string'
+const isValidLaika = (data: unknown): data is LaikaInfo => {
+  if (!data || typeof data !== 'object' || data === null) return false
+  const obj = data as Record<string, unknown>
+  return (
+    typeof obj.value === 'boolean' &&
+    typeof obj.timestamp === 'number' &&
+    typeof obj.env === 'string'
+  )
+}
 
 export function loadCached(
   key: string,
@@ -97,7 +100,6 @@ async function fetchStatus(
   } catch {
     return false
   }
-  return false
 }
 
 export async function getFeatureStatus(

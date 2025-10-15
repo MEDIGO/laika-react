@@ -1,6 +1,6 @@
 {
   "name": "laika-react",
-  "version": "1.1.9",
+  "version": "2.0.0",
   "description": "React Laika client",
   "homepage": "https://github.com/MEDIGO",
   "keywords": [
@@ -19,43 +19,60 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "cypress run-ct"
+    "test": "cypress run --component",
+    "test:coverage": "cypress run --component && nyc report --reporter=text --reporter=lcov",
+    "coverage:open": "open coverage/lcov-report/index.html",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\" \"*.{ts,js,json,md}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\" \"*.{ts,js,json,md}\"",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx && npm run format:check",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix && npm run format:write"
   },
   "files": [
     "/dist"
   ],
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
-    "@cypress/react": "^5.10.1",
-    "@cypress/webpack-dev-server": "^1.6.0",
+    "@cypress/code-coverage": "^3.14.7",
+    "@cypress/react": "^9.0.0",
+    "@cypress/webpack-dev-server": "^3.0.0",
+    "@eslint/js": "^9.37.0",
+    "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
     "@types/node": "^16.10.3",
-    "@types/react": "^17.0.27",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
     "babel-loader": "^8.2.2",
-    "cypress": "^8.6.0",
+    "babel-plugin-istanbul": "^7.0.1",
+    "cypress": "^15.4.0",
+    "eslint": "^9.37.0",
+    "eslint-plugin-cypress": "^5.2.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.0",
     "html-webpack-plugin": "^5.3.2",
-    "local-cypress": "^1.2.2",
+    "istanbul-lib-coverage": "^3.2.2",
+    "nyc": "^17.1.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.3",
-    "webpack": "^5.58.1",
-    "webpack-dev-server": "^4.3.1"
+    "typescript": "^5.0.0",
+    "webpack": "^5.102.1",
+    "webpack-dev-server": "^5.2.2"
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
     "semi": false
-  },
-  "packageManager": "yarn@3.0.2"
+  }
 }

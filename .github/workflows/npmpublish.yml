@@ -17,5 +17,4 @@ jobs:
       - run: make build
       - run: make publish
         env:
-          YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-          YARN_NPM_REGISTRY_SERVER: https://registry.npmjs.org/
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

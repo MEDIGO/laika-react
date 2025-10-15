@@ -1,18 +1,20 @@
 # laika-react
 This NPM package connects React applications with the Laika feature flag service (https://github.com/MEDIGO/laika)
 
+**Supports React 17 and React 18**
+
 ## Installation
-
-Yarn:
-
-```
-yarn add laika-react
-```
 
 npm:
 
 ```
-npm install -S laika-react
+npm install laika-react
+```
+
+yarn:
+
+```
+yarn add laika-react
 ```
 
 ## Usage
@@ -192,4 +194,4 @@ async function getFeatureStatus(
 
 ## License
 
-MIT Licensed. Copyright (c) Medigo GmbH 2021.
+MIT Licensed. Copyright (c) Medigo GmbH 2025.
