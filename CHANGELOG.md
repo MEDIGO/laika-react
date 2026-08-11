@@ -12,6 +12,17 @@
 - Upgraded `react` and `react-dom` devDependencies to `^19.0.0`
 - Upgraded `@types/react` and `@types/react-dom` to `^19.0.0`
 - Added `@types/prop-types` explicitly (no longer re-exported by `@types/react@19`)
+- Upgraded `cypress` to `^15.20.1`
+- Upgraded `@cypress/code-coverage` to `^4.0.3`
+- Upgraded `@cypress/webpack-dev-server` to `^5.6.3`
+- Upgraded `nyc` to `^18.0.0` (required by `@cypress/code-coverage@4`)
+- Removed `@cypress/react` (replaced by built-in `cypress/react`)
+
+- Upgraded `eslint` to `^10.8.1`
+- Upgraded `@eslint/js` to `^10.0.1`
+- Upgraded `@typescript-eslint/eslint-plugin` and `@typescript-eslint/parser` to `^8.67.0`
+- Upgraded `eslint-plugin-cypress` to `^7.0.0` (flat config; requires eslint>=10)
+- Upgraded `eslint-plugin-react-hooks` to `^7.1.1`
 
 ### 🔧 Improvements
 
