@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.1.0] - 2026-08-11
+
+### ✨ New Features
+
+- Added React 19 support
+
+### 🗂 Dependencies
+
+- Updated React peer dependencies to `"^17.0.0 || ^18.0.0 || ^19.0.0"`
+- Upgraded `react` and `react-dom` devDependencies to `^19.0.0`
+- Upgraded `@types/react` and `@types/react-dom` to `^19.0.0`
+- Added `@types/prop-types` explicitly (no longer re-exported by `@types/react@19`)
+
+### 🔧 Improvements
+
+- Switched Cypress test imports from `@cypress/react` to built-in `cypress/react`
+- Enabled Babel automatic JSX runtime (`"runtime": "automatic"`)
+
 ## [2.0.0] - 2025-10-15
 
 ### 🚀 Major Changes
